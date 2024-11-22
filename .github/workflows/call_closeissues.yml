@@ -22,7 +22,7 @@ jobs:
       ##if: github.ref_name == 'callview'
       steps:
         - name: Calling close issues
-        - uses: smiti6812/closing_issues@main
+          uses: smiti6812/closing_issues@main
           #if: github.ref_name == 'callview'
           id: issue
           with:
