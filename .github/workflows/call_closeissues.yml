@@ -3,11 +3,9 @@ on:
     pull_request:
       types:     
         - closed
-
     #push:
       #branches:
         #- main
-      
 
 jobs:   
     test:      
@@ -23,8 +21,8 @@ jobs:
             title: Test Issue
             body: Test issue body
             assignees: smiti6812
-            owner: "smiti6812"
-            repo: "closing_issues"
+            owner: "${{ github.repository_owner }}"
+            repo: "${{ github.event.repository.name }}"
             pull_number: ${{ github.event.pull_request.number }}
             branch: ${{ github.ref_name }}
         - run: |
@@ -36,4 +34,4 @@ jobs:
              echo  "${{ github.event.pull_request.number }}"
              echo "Branch: ${{ github.ref_name }}"
              echo "${{ github.event.repository.name }}"
-             echo "${{ github.repository_owner }}"     
+             echo "${{ github.repository_owner }}"
