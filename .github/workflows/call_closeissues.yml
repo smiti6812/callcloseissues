@@ -1,0 +1,46 @@
+name: Call list create issue
+
+#Myissue1
+
+
+
+#Myissue2
+
+on:
+    pull_request:
+      types:     
+        - closed
+
+    #push:
+      #branches:
+        #- main
+      
+
+jobs:   
+    test:      
+      runs-on: windows-latest
+      ##if: github.ref_name == 'callview'
+      steps:
+        - name: Calling close issues
+        - uses: smiti6812/closing_issues@main
+          #if: github.ref_name == 'callview'
+          id: issue
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            title: Test Issue
+            body: Test issue body
+            assignees: smiti6812
+            owner: "smiti6812"
+            repo: "closing_issues"
+            pull_number: ${{ github.event.pull_request.number }}
+            branch: ${{ github.ref_name }}
+        - run: |
+            echo "Repo owner: ${{github.context.repo.repo}}"
+            #echo "${{ steps.issue.outputs.issue }}"
+            echo "${{ steps.issue.outputs.Reponame }}"
+        - name: Show PR number
+          run: |
+             echo  "${{ github.event.pull_request.number }}"
+             echo "Branch: ${{ github.ref_name }}"
+             echo "${{ github.event.repository.name }}"
+             echo "${{ github.repository_owner }}"     
