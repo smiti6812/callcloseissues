@@ -11,7 +11,7 @@ on:
       types:     
         - closed
 
-    #push:
+    push:
       #branches:
         #- main
       
