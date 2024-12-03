@@ -24,7 +24,7 @@ jobs:
         - name: Get release tag
           id: gettag
           run: |
-            echo  "tag=smiti6812/closing_issues@v1.0.0" >> $env:GITHUB_OUTPUT
+            echo  "tag='smiti6812/closing_issues@v1.0.0'" >> $env:GITHUB_OUTPUT
         - name: Calling close issues
           uses: ${{ steps.gettag.outputs.tag }}
           #if: github.ref_name == 'callview'
